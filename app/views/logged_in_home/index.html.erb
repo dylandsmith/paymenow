@@ -1,0 +1,14 @@
+<h1>Welcome <%= current_user.username %></h1>
+<ul>
+<% @properties.each do |property| %>
+<li><%= property.title %></li>
+  <ul>
+  <% unless property.units.empty? %>
+  Units:
+    <% property.units.each do |unit| %>
+    <li><%= unit.address %></li>
+    <% end %>
+  <% end %>
+    </ul>
+<% end %>
+</ul>
