@@ -9,6 +9,9 @@
   </head>
 
   <body>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 		<% if user_signed_in? %>
 		  Logged in as <strong><%= current_user.username %></strong>.
 		  <%= link_to 'Edit profile', edit_user_registration_path %> |

@@ -1,14 +1,26 @@
 <h1>Welcome <%= current_user.username %></h1>
 <ul>
-<% @properties.each do |property| %>
-<li><%= property.title %></li>
-  <ul>
-  <% unless property.units.empty? %>
-  Units:
-    <% property.units.each do |unit| %>
-    <li><%= unit.address %></li>
+  <% @properties.each do |property| %>
+    <li><%= property.title %></li>
+      <ul>
+        <% unless property.units.empty? %>
+        Units:
+        <% property.units.each do |unit| %>
+          <li><%= unit.address %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    <%= form_tag({controller: 'logged_in_home', action: 'add_unit_to_property'}, method: 'post') do %>
+      <%= hidden_field_tag :prop_id, property.id %>
+      <%= label_tag(:address, 'Address') %>
+      <%= text_field_tag(:address) %>
+      <%= submit_tag("Add Unit to #{property.title}") %>
     <% end %>
   <% end %>
-    </ul>
-<% end %>
 </ul>
+
+<%= form_tag({controller: 'logged_in_home', action: 'add_new_property'}, method: 'post') do %>
+  <%= label_tag(:title, 'Property Title') %>
+  <%= text_field_tag(:title) %>
+  <%= submit_tag('Add Property') %>
+<% end %>

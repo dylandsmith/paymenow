@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
- # get 'logged_in_home/index'
+  post 'logged_in_home/add_new_property'
+  post 'logged_in_home/add_unit_to_property'
 
   devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
 
