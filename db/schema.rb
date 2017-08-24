@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821213150) do
+ActiveRecord::Schema.define(version: 20170824220237) do
+
+  create_table "leases", force: :cascade do |t|
+    t.decimal "credit"
+    t.decimal "debt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "unit_id"
+  end
+
+  create_table "leases_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lease_id"
+    t.index ["lease_id"], name: "index_leases_users_on_lease_id"
+    t.index ["user_id"], name: "index_leases_users_on_user_id"
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -23,6 +38,17 @@ ActiveRecord::Schema.define(version: 20170821213150) do
     t.integer "property_id"
     t.index ["property_id"], name: "index_properties_users_on_property_id"
     t.index ["user_id"], name: "index_properties_users_on_user_id"
+  end
+
+  create_table "unit_financials", force: :cascade do |t|
+    t.decimal "rental_fee"
+    t.float "late_fee"
+    t.date "rental_due_date"
+    t.float "deposit_amount"
+    t.float "deposit_amount_returned"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "unit_id"
   end
 
   create_table "units", force: :cascade do |t|

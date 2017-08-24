@@ -1,0 +1,10 @@
+<h1>Unit View Page</h1>
+
+<span><%= @unit.address %></span>
+<br>
+Rental Fee:
+<span><%= number_to_currency @unit_financials.rental_fee %></span>
+<br>
+Late Fee:
+<span><%= number_to_currency @unit_financials.late_fee %></span>
+<%= link_to "Back", authenticated_root_url %>

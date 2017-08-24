@@ -1,5 +1,11 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :properties
+  # has_and_belongs_to_many :properties
+
+  has_and_belongs_to_many :managed_properties, class_name: 'Property'
+  has_many :managed_units, through: :managed_properties, source: :units
+
+  has_and_belongs_to_many :leases
+  has_many :rented_units, through: :leases, source: :unit
 
   attr_accessor :login
 

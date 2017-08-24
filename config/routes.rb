@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   
-  post 'logged_in_home/add_new_property'
-  post 'logged_in_home/add_unit_to_property'
+  # resources :examples
+
+  namespace :managers do
+    resources :properties, only: [:show, :create] do
+      resources :units, only: [:show, :create]
+    end
+  end
 
   devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
 
