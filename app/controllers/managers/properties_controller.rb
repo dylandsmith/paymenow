@@ -1,4 +1,8 @@
-class Managers::PropertiesController < ApplicationRecord
+class Managers::PropertiesController < ApplicationController
+
+  def index
+    @properties = current_user.managed_properties
+  end
 
   def create
     @property = current_user.managed_properties.new(property_params)

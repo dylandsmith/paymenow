@@ -1,8 +1,8 @@
 class LoggedInHomeController < ApplicationController
 
   def index
-    @properties = current_user.managed_properties.include(:units)
-    @rented_units = current_user.rented_units
+    # @properties = current_user.managed_properties.include(:units)
+    # @rented_units = current_user.rented_units
   end
 
   # def add_new_property 
