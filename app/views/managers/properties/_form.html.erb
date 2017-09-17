@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Property Title</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for :property, method: 'patch' do |f|%>
+      <%= f.label(:title, 'Property Title') %>
+      <%= f.text_field(:title, class: 'form-control') %>
+      <%= f.submit('Add Property', class: 'form-control') %>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Remove Property</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for :property, method: 'delete' do |f|%>
+      <%= f.submit('Delete Property', class: 'form-control') %>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Show Units for This Property</h3>
+  </div>
+  <div class="panel-body">
+    <%= link_to "Units", managers_property_units_path(@property) %>
+  </div>
+</div>

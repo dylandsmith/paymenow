@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  # resources :examples
+  #resources :examples
 
   namespace :managers do
-    resources :properties, only: [:show, :create, :index] do
-      resources :units, only: [:show, :create]
+    resources :properties do
+      resources :units
     end
   end
 
