@@ -1,3 +1,9 @@
 <h1>Welcome <%= current_user.username %></h1>
-<%= link_to 'Properties', managers_properties_path %>
+<% if !@properties.empty? %>
+  <%= link_to 'Properties', managers_properties_path %>
+<% end %>
+
+<% if !@rented_units.empty? %>
+  <%= link_to 'Rented Units', tenants_rented_units_path %>
+<% end %>
 

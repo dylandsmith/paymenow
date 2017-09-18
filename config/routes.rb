@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :tenants do
+    resources :rented_units
+  end
+
   devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}
 
   authenticated :user do
